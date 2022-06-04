@@ -31,4 +31,7 @@ bot.catch((err) => {
   console.error(`Error while handling update ${ctx.update.update_id}:`, err.error)
 })
 
+process.once('SIGINT', () => bot.stop())
+process.once('SIGTERM', () => bot.stop())
+
 bot.start({ drop_pending_updates: true })
