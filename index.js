@@ -16,10 +16,10 @@ bot.command('start', async (ctx) => {
   const year = new Date().getFullYear()
 
   await ctx.reply(multiline(`
-    Hello, *${user}*\\!
-    Welcome to ~${year}~ *1984*\\!
+    Hey, <b>${user}</b>!
+    Welcome to <del>${year}</del> <b>1984</b>!
   `), {
-    parse_mode: 'MarkdownV2',
+    parse_mode: 'HTML',
     reply_markup: new InlineKeyboard()
       .webApp('Get Outline', process.env.GET_OUTLINE_URL).row()
       .webApp('Free Access Keys', process.env.ACCESS_KEYS_URL)
