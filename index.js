@@ -21,8 +21,8 @@ bot.command('start', async (ctx) => {
   `), {
     parse_mode: 'MarkdownV2',
     reply_markup: new InlineKeyboard()
-      .webApp('Get Outline', 'https://getoutline.org/get-started/').row()
-      .webApp('Free Access Keys', 'https://outline.community/access-keys/')
+      .webApp('Get Outline', process.env.GET_OUTLINE_URL).row()
+      .webApp('Free Access Keys', process.env.ACCESS_KEYS_URL)
   })
 })
 
