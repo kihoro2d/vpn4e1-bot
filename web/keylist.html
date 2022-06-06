@@ -65,7 +65,9 @@
             },
 
             keylist: [],
-            loading: false
+
+            loading: false,
+            fallback: null
           }
         },
         computed: {
@@ -87,6 +89,7 @@
 
               this.api.params.page++
             } catch (error) {
+              this.fallback = 'https://outline.community/access-keys/'
               window.alert(`Error: ${error.message}`)
             }
 
@@ -140,8 +143,12 @@
       <div class="layout-head">
         <button class="btn btn-block btn-danger" @click="closeApp">Close</button>
         <button class="btn btn-block btn-large btn-outline" @click="fetchKeys" :disabled="loading">
-          Fetch Access Keys
+          <template v-if="loading">Loading<span class="AnimatedEllipsis"></span></template>
+          <template v-else>Fetch Access Keys</template>
         </button>
+        <template v-if="fallback">
+          <a class="btn btn-block btn-primary" :href="fallback">Source Site</a>
+        </template>
       </div>
       <div class="layout-main" v-if="keylist && keylist.length">
         <div class="keylist">
