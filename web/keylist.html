@@ -80,6 +80,7 @@
         },
         methods: {
           async fetchKeys() {
+            this.api.error = null
             this.api.loading = true
 
             try {
