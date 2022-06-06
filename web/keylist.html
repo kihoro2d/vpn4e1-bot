@@ -98,13 +98,13 @@
 
           prepareKeyData(data) {
             const id = data.id
-            const ss = window.lodash.get(data, 'acf.key_ss')
+            const ss = window._.get(data, 'acf.key_ss')
             const country = ss.match(/\((?<country>.+)\)/)?.groups.country
-            const quality = window.lodash.get(data, 'acf.key_quality')
+            const quality = window._.get(data, 'acf.key_quality')
 
-            const name = window.lodash.get(data, 'title.rendered')
-            const flag = window.lodash.get(data, 'yoast_head_json.twitter_image')
-            const date = window.lodash.get(data, 'yoast_head_json.article_published_time')
+            const name = window._.get(data, 'title.rendered')
+            const flag = window._.get(data, 'yoast_head_json.twitter_image')
+            const date = window._.get(data, 'yoast_head_json.article_published_time')
 
             return { id, ss, country, quality, name, flag, date }
           },
