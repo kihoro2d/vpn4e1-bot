@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Get Client App - VPN4E1_Bot</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/sanitize.css@13.0.0/sanitize.css">
+  <link rel="stylesheet" href="https://unpkg.com/@primer/css@20.2.2/dist/primer.css">
+
+  <style>
+    .layout,
+    .layout-head,
+    .layout-main {
+      display: grid;
+      row-gap: 12px
+    }
+
+    .layout {
+      max-width: 480px;
+      max-height: 100vh;
+      grid-template-rows: auto minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 16px;
+      padding: 16px;
+      margin: 0 auto;
+    }
+
+    .layout:not(.anim-fade-in) {
+      opacity: 0;
+    }
+  </style>
+
+  <script src="https://kit.fontawesome.com/581c0e607e.js" defer></script>
+  <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
+  <script src="https://unpkg.com/vue@3.2.36/dist/vue.global.js" defer></script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      document.documentElement.setAttribute('data-color-mode', Telegram.WebApp.colorScheme)
+
+      window.Vue.createApp({
+        data() {
+          return {
+            ready: false,
+
+            oslist: [{
+              name: 'Android',
+              icon: 'fa-android',
+              link: 'https://play.google.com/store/apps/details?id=org.outline.android.client'
+            },{
+              name: 'iOS',
+              icon: 'fa-apple',
+              link: 'https://itunes.apple.com/us/app/outline-app/id1356177741'
+            },{
+              name: 'Windows',
+              icon: 'fa-windows',
+              link: 'https://raw.githubusercontent.com/Jigsaw-Code/outline-releases/master/client/stable/Outline-Client.exe'
+            },{
+              name: 'Linux',
+              icon: 'fa-linux',
+              link: 'https://raw.githubusercontent.com/Jigsaw-Code/outline-releases/master/client/stable/Outline-Client.AppImage'
+            },{
+              name: 'MacOS',
+              icon: 'fa-apple',
+              link: 'https://itunes.apple.com/us/app/outline-app/id1356178125'
+            },{
+              name: 'Chrome OS',
+              icon: 'fa-chrome',
+              link: 'https://play.google.com/store/apps/details?id=org.outline.android.client'
+            }]
+          }
+        },
+        methods: {
+          closeApp() {
+            window.Telegram.WebApp.close()
+          }
+        },
+        created() {
+          window.Telegram.WebApp.ready()
+        },
+        mounted() {
+          this.ready = true
+        }
+      }).mount('#app')
+    })
+
+  </script>
+</head>
+<body>
+
+  <div id="app">
+    <div class="layout" :class="{ 'anim-fade-in': ready }">
+      <div class="layout-head">
+        <ul class="list-style-none">
+          <li class="d-inline-block col-8">
+            <a class="btn btn-block" href="https://getoutline.org/get-started/">Source Site</a>
+          </li>
+          <li class="d-inline-block col-4 pl-2">
+            <button class="btn btn-block btn-danger" @click="closeApp">Close</button>
+          </li>
+        </ul>
+      </div>
+      <div class="layout-main">
+
+        <div class="Box">
+          <div class="Box-header">
+            <h3 class="Box-title text-center">
+              Outline Client for Desktop and Mobile
+            </h3>
+          </div>
+          <div class="Box-body">
+            <p class="color-fg-muted text-small">Download the Outline Client app from either the App store or Google Play store, and connect using your unique access key. The Client app is available for desktop and mobile devices, so you can access the open internet and communicate privately wherever you are and from all of your devices.</p>
+
+            <ul class="list-style-none mt-n1 mr-n1 mb-n1 ml-n1">
+              <li class="d-inline-block col-4 p-1 anim-fade-in" v-for="item in oslist" :key="item">
+                <a class="btn btn-large d-flex flex-column flex-items-center" :href="item.link" target="_blank">
+                  <i class="fa-brands fa-2x mb-1 fa-android" :class="item.icon"></i><span v-text="item.name"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
