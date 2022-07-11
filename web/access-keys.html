@@ -113,7 +113,7 @@
             const quality = window._.get(data, 'acf.key_quality')
 
             const name = window._.get(data, 'title.rendered')
-            const flag = window._.get(data, 'yoast_head_json.twitter_image')
+            const flag = window._.get(data, 'yoast_head_json.twitter_image') || window._.get(data, 'yoast_head_json.og_image[0].url')
             const date = window._.get(data, 'yoast_head_json.article_published_time')
 
             return { id, ss, country, quality, name, flag, date }
