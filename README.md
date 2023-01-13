@@ -15,3 +15,7 @@ cd vpn4e1-bot
 cp .env.example .env
 deno task dev
 ```
+
+## Set Webhook
+
+`https://api.telegram.org/bot<TOKEN>/setWebhook?url=<APP_URL>`
